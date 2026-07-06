@@ -1,0 +1,169 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* ─── Base Reset ──────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-900 text-white font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-800;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-600 rounded-full;
+  }
+}
+
+/* ─── Component Utilities ─────────────────────────────────────────────────── */
+@layer components {
+  /* Glass card effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  .glass-hover {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20;
+  }
+
+  /* Premium button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-900;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-900 bg-primary-600 hover:bg-primary-500 text-white focus:ring-primary-500 shadow-lg shadow-primary-900/50 hover:shadow-primary-700/50 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-900 bg-white/10 hover:bg-white/15 text-white border border-white/20 hover:border-white/30 focus:ring-white/30;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-900 text-gray-300 hover:text-white hover:bg-white/10 focus:ring-white/20;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-900 bg-red-600 hover:bg-red-500 text-white focus:ring-red-500;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs rounded-lg;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-base rounded-2xl;
+  }
+
+  /* Form inputs */
+  .input {
+    @apply w-full px-4 py-3 bg-surface-700 border border-white/10 rounded-xl text-white placeholder-gray-500 transition-all duration-200
+    focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20;
+  }
+
+  .input-error {
+    @apply border-red-500 focus:border-red-500 focus:ring-red-500/20;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-300 mb-1.5;
+  }
+
+  .error-text {
+    @apply text-red-400 text-xs mt-1;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6;
+  }
+
+  .card-hover {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 p-6 cursor-pointer;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-900/60 text-primary-300 border border-primary-700/50;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-900/60 text-emerald-300 border border-emerald-700/50;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-900/60 text-amber-300 border border-amber-700/50;
+  }
+
+  /* Page wrapper */
+  .page {
+    @apply min-h-screen bg-surface-900;
+  }
+
+  /* Section heading */
+  .section-title {
+    @apply text-2xl font-bold text-white;
+  }
+
+  .section-subtitle {
+    @apply text-gray-400 mt-1;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-white/10 my-6;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent;
+  }
+
+  /* Step indicator dot */
+  .step-dot {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300;
+  }
+
+  .step-dot-active {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 bg-primary-600 text-white shadow-lg shadow-primary-900/50;
+  }
+
+  .step-dot-done {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 bg-emerald-600 text-white;
+  }
+
+  .step-dot-pending {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 bg-surface-700 text-gray-500 border border-white/10;
+  }
+}
+
+/* ─── Animations ──────────────────────────────────────────────────────────── */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+}
